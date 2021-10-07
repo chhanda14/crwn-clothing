@@ -6,8 +6,9 @@ import { auth } from "../../firebase/firebase.utils";
 
 import { Link } from "react-router-dom";
 
-const Header = (currentUser) => (
+const Header = ({ currentUser }) => (
   <div className="header">
+    <div></div>
     <Link className="logo-container" to="/">
       <Logo className="logo" />
     </Link>
@@ -27,6 +28,17 @@ const Header = (currentUser) => (
           Sign In
         </Link>
       )}
+
+      {/* {currentUser.currentUser && (
+        <div className="option" onClick={() => auth.signOut()}>
+          Sign Out
+        </div>
+      )}
+      {!currentUser.currentUser && (
+        <Link className="option" to="/signin">
+          Sign In
+        </Link>
+      )} */}
     </div>
   </div>
 );
