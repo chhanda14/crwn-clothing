@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import "./header.styles.scss";
+// import "./header.styles.scss";
+
+import styles from "./header.module.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 
@@ -14,24 +16,24 @@ import { selectcartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header">
+  <div className={styles.header}>
     <div></div>
-    <Link className="logo-container" to="/">
+    <Link className={styles.logo} to="/">
       <Logo className="logo" />
     </Link>
-    <div className="options">
-      <Link className="option" to="/shop">
+    <div className={styles.options}>
+      <Link className={styles.option} to="/shop">
         SHOP
       </Link>
-      <Link className="option" to="/shop">
+      <Link className={styles.option} to="/shop">
         CONTACT
       </Link>
       {currentUser ? (
-        <div className="option" onClick={() => auth.signOut()}>
+        <div className={styles.option} onClick={() => auth.signOut()}>
           Sign Out
         </div>
       ) : (
-        <Link className="option" to="/signin">
+        <Link className={styles.option} to="/signin">
           Sign In
         </Link>
       )}
